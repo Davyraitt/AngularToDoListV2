@@ -1,0 +1,28 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-angulartodolist-dev-161753-authRole",
+      "UnauthRoleArn": "arn:aws:iam::761592464078:role/amplify-angulartodolist-dev-161753-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::761592464078:role/amplify-angulartodolist-dev-161753-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-angulartodolist-dev-161753-deployment",
+      "UnauthRoleName": "amplify-angulartodolist-dev-161753-unauthRole",
+      "StackName": "amplify-angulartodolist-dev-161753",
+      "StackId": "arn:aws:cloudformation:eu-west-1:761592464078:stack/amplify-angulartodolist-dev-161753/f33f2560-90cd-11ec-a5f1-0a33e387a00f",
+      "AmplifyAppId": "dgm8ccibn18rd",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-angulartodolist-dev-161753-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "auth": {
+        "undefined": {},
+        "angulartodolist": {}
+      },
+      "function": {
+        "TDLLambda": {
+          "deploymentBucketName": "amplify-angulartodolist-dev-161753-deployment",
+          "s3Key": "amplify-builds/TDLLambda-62475346516834425955-build.zip"
+        }
+      }
+    }
+  }
+}

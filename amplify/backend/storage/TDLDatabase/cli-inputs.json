@@ -1,0 +1,10 @@
+{
+  "resourceName": "TDLDatabase",
+  "tableName": "TDLDatabase",
+  "partitionKey": {
+    "fieldName": "Description",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
