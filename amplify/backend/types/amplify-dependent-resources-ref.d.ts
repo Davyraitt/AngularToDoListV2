@@ -21,6 +21,12 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "tododbreader": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "auth": {
@@ -44,6 +50,11 @@ export type AmplifyDependentResourcesAttributes = {
             "ApiId": "string"
         },
         "tododbwriter": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "tododbreader": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"

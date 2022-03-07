@@ -106,6 +106,20 @@
           ]
         }
       ]
+    },
+    "tododbreader": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "tododbreader",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
     }
   }
 }

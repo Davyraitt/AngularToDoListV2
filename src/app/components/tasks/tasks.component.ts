@@ -60,5 +60,29 @@ export class TasksComponent implements OnInit {
 
   async onClickGet() { 
     console.log("Get clicked")
+
+    let jwt;
+    const user = await Auth.currentAuthenticatedUser()
+      .then(
+        data => {jwt = data.signInUserSession.idToken.jwtToken}
+        )
+      .catch(err => console.log(err));
+
+      const apiName = 'tododbreader'; // replace this with your api name.
+      const path = '/items'; //replace this with the path you have configured on your API
+      const requestData = { 
+        headers: {
+          Authorization: jwt
+        }, 
+      };
+
+      API.get(apiName, path, requestData)
+      .then((response) => {
+        console.log({response})
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+
   }
 }
