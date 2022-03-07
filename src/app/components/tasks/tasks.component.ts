@@ -21,7 +21,7 @@ export class TasksComponent implements OnInit {
 
   }
 
-  async onClick() {
+  async onClickPush() {
         console.log("clicked")
         let jwt;
      
@@ -56,5 +56,9 @@ export class TasksComponent implements OnInit {
           .catch((error) => {
             console.log(error.response);
           });
+  }
+
+  async onClickGet() { 
+    console.log("Get clicked")
   }
 }

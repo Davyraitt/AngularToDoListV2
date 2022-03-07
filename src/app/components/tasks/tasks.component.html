@@ -1,7 +1,13 @@
 <button 
 class="btn"
-(click)="onClick()">
-Klik</button>
+(click)="onClickPush()">
+Push API</button>
+
+<button 
+class="btn"
+(click)="onClickGet()">
+Get API</button>
+
 <app-task-item
   *ngFor="let task of tasks"
   [task]="task"
