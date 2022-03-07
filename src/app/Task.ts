@@ -1,7 +1,8 @@
 export interface Task{
-    id?: number;
+    ID?: number;
     Description: string;
-    priority: string;
-    day: string;
-    reminder: boolean;
+    Priority: string;
+    Day: string;
+    Reminder: boolean;
+    Owner: String;
 }

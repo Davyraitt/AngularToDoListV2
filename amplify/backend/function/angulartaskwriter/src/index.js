@@ -1,7 +1,7 @@
 const AWS = require("aws-sdk");
 AWS.config.update({ region: process.env.TABLE_REGION });
 const dynamodb = new AWS.DynamoDB.DocumentClient();
-let tableName = 'TDLDatabase';
+let tableName = "TDLDatabase";
 if (process.env.ENV && process.env.ENV !== "NONE") {
   tableName = tableName + "-" + process.env.ENV;
 }
@@ -17,13 +17,11 @@ exports.handler = async (event) => {
     // console.log(event.body);
     // console.log(event.body['Description'])
     // console.log(event.body.Description)
-     // console.log(typeof event.body);
+    // console.log(typeof event.body);
     // console.log(body.Description);
 
-
-
     body = JSON.parse(event["body"]);
-   
+
     var params = {
       TableName: tableName,
       Item: {
@@ -53,16 +51,16 @@ exports.handler = async (event) => {
     console.log("Status code : 400, Error code : ", error.stack);
   }
 
-//   dynamodb.put(params, function (err, data) {
-//     if (err) {
-//       console.error(
-//         "Unable to add item. Error JSON:",
-//         JSON.stringify(err, null, 2)
-//       );
-//     } else {
-//       console.log("Added item:", JSON.stringify(data, null, 2));
-//     }
-//   });
+  //   dynamodb.put(params, function (err, data) {
+  //     if (err) {
+  //       console.error(
+  //         "Unable to add item. Error JSON:",
+  //         JSON.stringify(err, null, 2)
+  //       );
+  //     } else {
+  //       console.log("Added item:", JSON.stringify(data, null, 2));
+  //     }
+  //   });
 
   return {
     statusCode: statuscode,
