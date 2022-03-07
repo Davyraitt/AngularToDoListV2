@@ -21,6 +21,10 @@
         "TDLLambda": {
           "deploymentBucketName": "amplify-angulartodolist-dev-161753-deployment",
           "s3Key": "amplify-builds/TDLLambda-62475346516834425955-build.zip"
+        },
+        "angulartaskwriter": {
+          "deploymentBucketName": "amplify-angulartodolist-dev-161753-deployment",
+          "s3Key": "amplify-builds/angulartaskwriter-66726f6578507a6a6e62-build.zip"
         }
       }
     }

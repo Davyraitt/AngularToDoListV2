@@ -11,38 +11,50 @@ import { API, Auth } from 'aws-amplify';
 export class TasksComponent implements OnInit {
   tasks: Task[] = TASKS;
 
-
   constructor() {
     console.log('Hoi wereld');
-    const apiName = 'ToDoList';
-    const path = '/items';
-    
-    const myInit = {
-      // OPTIONAL
-      headers: {}, // OPTIONAL
-      response: true, // OPTIONAL (return the entire Axios response object instead of only response.data)
-      queryStringParameters: {
-        // OPTIONAL
-        name: 'param',
-      },
-    };
-
-    API.get(apiName, path, myInit)
-      .then((response) => {
-        // Add your code here
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
+    // maybe api stuff here?
   }
 
   ngOnInit(): void {
-    Auth.currentSession().then(res=>{
-      let accessToken = res.getAccessToken()
-      let jwt = accessToken.getJwtToken()
-      //You can print them to see the full objects
-      console.log(`myAccessToken: ${JSON.stringify(accessToken)}`)
-      console.log(`myJwt: ${jwt}`)
-    })
+    
+
+  }
+
+  async onClick() {
+        console.log("clicked")
+        let jwt;
+     
+        const user = await Auth.currentAuthenticatedUser()
+          .then(
+            data => {jwt = data.signInUserSession.idToken.jwtToken}
+            )
+          .catch(err => console.log(err));
+    
+
+        const apiName = 'tododbwriter'; // replace this with your api name.
+        const path = '/items'; //replace this with the path you have configured on your API
+        const requestData = {
+          body: {
+            Description:'Afspraak met dr maken',
+            Day:'April 5th at 2:30pm',
+            Priority:'High',
+            ID:2,
+            Reminder:true
+          }, 
+          headers: {
+            Authorization: jwt
+          }, 
+        };
+
+        console.log({requestData});
+    
+        API.post(apiName, path, requestData)
+          .then((response) => {
+            console.log({response})
+          })
+          .catch((error) => {
+            console.log(error.response);
+          });
   }
 }

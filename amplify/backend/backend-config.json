@@ -24,6 +24,11 @@
           }
         }
       ]
+    },
+    "angulartaskwriter": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "auth": {
@@ -76,6 +81,20 @@
         {
           "category": "function",
           "resourceName": "TDLLambda",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "tododbwriter": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "angulartaskwriter",
           "attributes": [
             "Name",
             "Arn"

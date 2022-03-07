@@ -15,6 +15,12 @@ export type AmplifyDependentResourcesAttributes = {
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
+        },
+        "angulartaskwriter": {
+            "Name": "string",
+            "Arn": "string",
+            "Region": "string",
+            "LambdaExecutionRole": "string"
         }
     },
     "auth": {
@@ -33,6 +39,11 @@ export type AmplifyDependentResourcesAttributes = {
     },
     "api": {
         "ToDoList": {
+            "RootUrl": "string",
+            "ApiName": "string",
+            "ApiId": "string"
+        },
+        "tododbwriter": {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
