@@ -70,4 +70,31 @@ export class TaskService {
     return this.getTasks();
   }
 
+  async updateTaskReminder(task : Task): Promise<Observable<Task[]>> {
+    let apiName = 'tododbwriter'; // replace this with your api name.
+    const requestData = {
+      body: {
+        Description: task.Description,
+        Day: task.Day,
+        Priority: task.Priority,
+        ID: task.ID,
+        Reminder: task.Reminder,
+        Read: task.Read
+      },
+      headers: {
+        Authorization: jwt,
+      },
+    };
+
+    API.post(apiName, "/items", requestData)
+      .then((response) => {
+        //console.log({ response });
+      })
+      .catch((error) => {
+        //console.log(error.response);
+      });
+
+    return this.getTasks();
+  }
+
 }

@@ -12,6 +12,7 @@ Get API</button>
   *ngFor="let task of tasks"
   [task]="task"
   (onDeleteTask)="deleteTask(task)"
+  (onToggleReminder)="toggleReminder(task)"
 ></app-task-item>
 
 

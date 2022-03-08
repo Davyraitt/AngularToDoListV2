@@ -86,6 +86,11 @@ export class TasksComponent implements OnInit {
       );
   }
 
+  async toggleReminder(task: Task) {
+    task.Reminder = !task.Reminder;
+    (await this.taskService.updateTaskReminder(task)).subscribe();
+  }
+
    getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
   }
