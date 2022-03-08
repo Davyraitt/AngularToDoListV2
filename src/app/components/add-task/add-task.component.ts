@@ -27,7 +27,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   async onSubmit() {
-    if (!this.Description || !this.Priority || !this.Day || !this.Reminder) {
+    if (!this.Description || !this.Priority || !this.Day) {
       alert('Please make sure you have entered every field in the form!');
       return;
     }
