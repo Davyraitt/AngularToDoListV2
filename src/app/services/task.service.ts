@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 
 var jwt: any;
 var items: any;
+var username: string;
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +18,7 @@ export class TaskService {
     let user = await Auth.currentAuthenticatedUser()
       .then((data) => {
         jwt = data.signInUserSession.idToken.jwtToken;
+        username = jwt.username;
       })
       .catch((err) => console.log(err));
 
@@ -97,4 +99,35 @@ export class TaskService {
     return this.getTasks();
   }
 
+  async addTask(task : Task): Promise<Observable<Task[]>> {
+    console.log("starting addtask")
+    let apiName = 'tododbwriter'; // replace this with your api name.
+    const requestData = {
+      body: {
+        Description: task.Description,
+        Day: task.Day,
+        Priority: task.Priority,
+        ID: task.ID,
+        Reminder: task.Reminder,
+        Read: task.Read
+      },
+      headers: {
+        Authorization: jwt,
+      },
+    };
+
+    API.post(apiName, "/items", requestData)
+      .then((response) => {
+        console.log("done addtask");
+        console.log({ response });
+      })
+      .catch((error) => {
+        console.log("done addtask");
+        console.log(error.response);
+      });
+
+    return this.getTasks();
+  }
+
+  
 }

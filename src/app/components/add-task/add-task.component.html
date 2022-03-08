@@ -1,1 +1,35 @@
-<p>add-task works!</p>
+
+<form class="add-form"
+(ngSubmit)="onSubmit()"
+>
+<div class="form-control">  
+    <label for="Description">Taak beschrijving</label>
+    <input type="text" name="Description" 
+    [(ngModel)]="Description" 
+    id="Description" placeholder="Taak beschrijving">
+</div>
+
+<div class="form-control">  
+    <label for="Priority">Prioriteit</label>
+    <input type="text" 
+    [(ngModel)]="Priority" 
+    name="Priority" id="Priority" placeholder="Laag / Gemiddeld / Hoog">
+</div>
+
+<div class="form-control">  
+    <label for="Day">Streefdatum</label>
+    <input type="text" 
+    [(ngModel)]="Day" 
+    name="Day" id="Day" placeholder="Streefdatum">
+</div>
+
+<div class="form-control form-control-check">  
+    <label for="Reminder"> Herinnering sturen?</label>
+    <input type="checkbox" 
+    [(ngModel)]="Reminder" 
+    name="Reminder" id="Reminder" placeholder="Herinnering sturen?">
+</div>
+
+<input type="submit" value="Taak opslaan" class =" btn btn-block">
+
+</form>

@@ -26,9 +26,9 @@ export class TasksComponent implements OnInit {
       })
       .catch((err) => console.log(err));
 
-    (
-      await this.taskService.getTasks()
-    ).subscribe((tasks: Task[]) => (this.tasks = tasks));
+    (await this.taskService.getTasks()).subscribe(
+      (tasks: Task[]) => (this.tasks = tasks)
+    );
   }
 
   async sendToDoToDatabase() {
@@ -42,7 +42,7 @@ export class TasksComponent implements OnInit {
         Priority: 'High',
         ID: this.getRandomInt(99999),
         Reminder: true,
-        Read: false
+        Read: false,
       },
       headers: {
         Authorization: jwt,
@@ -80,10 +80,11 @@ export class TasksComponent implements OnInit {
       });
   }
 
-  async deleteTask(task: Task) { // 
-    (
-      await (await this.taskService.deleteTask(task)).subscribe(() => (this.tasks = this.tasks.filter(t => t.ID !== task.ID)))
-      );
+  async deleteTask(task: Task) {
+    //
+    (await this.taskService.deleteTask(task)).subscribe(
+      () => (this.tasks = this.tasks.filter((t) => t.ID !== task.ID))
+    );
   }
 
   async toggleReminder(task: Task) {
@@ -91,7 +92,13 @@ export class TasksComponent implements OnInit {
     (await this.taskService.updateTaskReminder(task)).subscribe();
   }
 
-   getRandomInt(max: number) {
+  async addTask(task: Task) {
+    (await this.taskService.addTask(task)).subscribe((tasks: Task[]) =>
+      this.tasks.push(task)
+    );
+  }
+
+  getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
   }
 }

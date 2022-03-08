@@ -1,4 +1,4 @@
-<button 
+<!-- <button 
 class="btn"
 (click)="sendToDoToDatabase()">
 Push API</button>
@@ -6,7 +6,9 @@ Push API</button>
 <button 
 class="btn"
 (click)="getMatchingToDoFromDatabase()">
-Get API</button>
+Get API</button> -->
+
+<app-add-task (onAddTask)="addTask($event)"></app-add-task>
 
 <app-task-item
   *ngFor="let task of tasks"
