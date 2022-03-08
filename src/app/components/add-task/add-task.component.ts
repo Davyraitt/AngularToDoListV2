@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { Task } from '../../Task';
 
+
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
