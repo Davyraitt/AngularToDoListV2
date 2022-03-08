@@ -24,11 +24,15 @@
         },
         "angulartaskwriter": {
           "deploymentBucketName": "amplify-angulartodolist-dev-161753-deployment",
-          "s3Key": "amplify-builds/angulartaskwriter-66726f6578507a6a6e62-build.zip"
+          "s3Key": "amplify-builds/angulartaskwriter-36304569366269694f75-build.zip"
         },
         "tododbreader": {
           "deploymentBucketName": "amplify-angulartodolist-dev-161753-deployment",
-          "s3Key": "amplify-builds/tododbreader-35314b33374c43536947-build.zip"
+          "s3Key": "amplify-builds/tododbreader-5a334237713377306641-build.zip"
+        },
+        "dynamodbdeleter": {
+          "deploymentBucketName": "amplify-angulartodolist-dev-161753-deployment",
+          "s3Key": "amplify-builds/dynamodbdeleter-317541594f2f59567161-build.zip"
         }
       }
     }

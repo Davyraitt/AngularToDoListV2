@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../Task';
 import { API, Auth } from 'aws-amplify';
-import { TaskService } from '../../services/task.service'
+import { TaskService } from '../../services/task.service';
 
 var jwt: any;
 var apiName: any;
@@ -19,22 +19,17 @@ export class TasksComponent implements OnInit {
 
   constructor(private taskService: TaskService) {}
 
-
   async ngOnInit(): Promise<void> {
-    // user = await Auth.currentAuthenticatedUser()
-    //   .then((data) => {
-    //     jwt = data.signInUserSession.idToken.jwtToken;
-    //   })
-    //   .catch((err) => console.log(err));
+    user = await Auth.currentAuthenticatedUser()
+      .then((data) => {
+        jwt = data.signInUserSession.idToken.jwtToken;
+      })
+      .catch((err) => console.log(err));
 
-     (await
-      // user = await Auth.currentAuthenticatedUser()
-      //   .then((data) => {
-      //     jwt = data.signInUserSession.idToken.jwtToken;
-      //   })
-      //   .catch((err) => console.log(err));
-      this.taskService.getTasks()).subscribe((tasks: Task[]) => (this.tasks = tasks));
-    }
+    (
+      await this.taskService.getTasks()
+    ).subscribe((tasks: Task[]) => (this.tasks = tasks));
+  }
 
   async sendToDoToDatabase() {
     console.log('clicked');
@@ -42,11 +37,12 @@ export class TasksComponent implements OnInit {
     apiName = 'tododbwriter'; // replace this with your api name.
     const requestData = {
       body: {
-        Description: 'Afspraak met Melvin maken',
+        Description: 'Als het goed is wordt dit verwijderd!!!!',
         Day: 'Juli 5th at 2:30pm',
         Priority: 'High',
-        ID: 3,
+        ID: this.getRandomInt(99999),
         Reminder: true,
+        Read: false
       },
       headers: {
         Authorization: jwt,
@@ -73,7 +69,7 @@ export class TasksComponent implements OnInit {
 
     API.get(apiName, path, requestData)
       .then((response) => {
-        console.log (" resp: ");
+        console.log(' resp: ');
         console.log({ response });
         items = response.items;
         return items;
@@ -82,5 +78,15 @@ export class TasksComponent implements OnInit {
         console.log(error.response);
         return null;
       });
+  }
+
+  async deleteTask(task: Task) { // 
+    (
+      await (await this.taskService.deleteTask(task)).subscribe(() => (this.tasks = this.tasks.filter(t => t.ID !== task.ID)))
+      );
+  }
+
+   getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
   }
 }

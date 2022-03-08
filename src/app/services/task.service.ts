@@ -11,7 +11,6 @@ var items: any;
 })
 export class TaskService {
   constructor() {
-      
   }
 
   async getTasks(): Promise<Observable<Task[]>> {
@@ -41,6 +40,34 @@ export class TaskService {
 
     var tasks = of(items);
     return tasks;
+  }
+
+  async deleteTask(task : Task): Promise<Observable<Task[]>> {
+    let apiName = 'tododbwriter'; 
+    const requestData = {
+      body: {
+        Description: task.Description,
+        Day: task.Day,
+        Priority: task.Priority,
+        ID: task.ID,
+        Reminder: task.Reminder,
+        Read: true
+      },
+      headers: {
+        Authorization: jwt,
+      },
+    };
+
+    API.post(apiName, "/items", requestData)
+      .then((response) => {
+        console.log({ response });
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+
+
+    return this.getTasks();
   }
 
 }

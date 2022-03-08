@@ -5,4 +5,5 @@ export interface Task{
     Day: string;
     Reminder: boolean;
     Owner: String;
+    Read: boolean;
 }
